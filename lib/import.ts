@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import { useTypescriptResolver } from "./compiler";
 import { BaseOptions } from "./types";
+import { resolve } from "path";
 
 export async function importSequelizeModel(
   options: BaseOptions
@@ -10,7 +11,7 @@ export async function importSequelizeModel(
   // Asserts that ts-node is initialized
   useTypescriptResolver(options);
 
-  let modelsImport: any = await import(modelsDirectory + "/index.ts");
+  let modelsImport: any = await import(resolve(modelsDirectory, "index.ts"));
   if ("default" in modelsImport) {
     modelsImport = modelsImport.default;
   }

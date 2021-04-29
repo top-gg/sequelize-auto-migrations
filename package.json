@@ -1,12 +1,12 @@
 {
-  "name": "sequelize-auto-migrations-typescript",
-  "version": "1.0.3",
+  "name": "@top-gg/sequelize-typescript-auto-migrations",
+  "version": "0.0.1",
   "description": "Sequelize migrations generator && runner for sequelize-typescript",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "private": false,
   "bin": {
-    "runmigration": "./bin/runmigration.js",
-    "makemigration": "./bin/makemigration.js"
+    "sequelize-ts": "./dist/bin/sequelize-ts.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,22 +14,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flexxnn/sequelize-auto-migrations.git"
+    "url": "git+https://github.com/top-gg/sequelize-auto-migrations.git"
   },
   "keywords": [
     "sequelize",
+    "typescript",
     "migrations",
     "migration",
     "database",
     "db",
     "sql"
   ],
-  "author": "Michael Maslov",
+  "author": "velddev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flexxnn/sequelize-auto-migrations/issues"
+    "url": "https://github.com/top-gg/sequelize-typescript-auto-migrations/issues"
   },
-  "homepage": "https://github.com/flexxnn/sequelize-auto-migrations#readme",
+  "homepage": "https://github.com/top-gg/sequelize-typescript-auto-migrations#readme",
   "dependencies": {
     "async": "^2.5.1",
     "command-line-args": "^5.0.2",
@@ -49,5 +50,8 @@
     "@types/js-beautify": "^1.13.1",
     "@types/lodash": "^4.14.168",
     "@types/yargs": "^16.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

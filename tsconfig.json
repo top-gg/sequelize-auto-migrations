@@ -19,6 +19,8 @@
     "isolatedModules": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "removeComments": true,
+    "declaration": true,
     "jsx": "preserve"
   },
   "include": [
@@ -28,6 +30,7 @@
   ],
   "exclude": [
     "dist",
+    "example",
     "node_modules",
   ]
 }

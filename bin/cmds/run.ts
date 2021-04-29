@@ -14,11 +14,6 @@ interface RunOptions extends BaseOptions {
   rev: number;
 }
 
-// Windows support
-if (!process.env.PWD) {
-  process.env.PWD = process.cwd();
-}
-
 export const command = "run";
 
 export const description = "run migrations to your database";
@@ -56,9 +51,15 @@ export const builder = {
 };
 
 export const handler = async (options: RunOptions) => {
+  // Windows support
+  if (!process.env.PWD) {
+    process.env.PWD = process.cwd();
+  }
+
   let baseOptions = build(options);
 
   if (!existsSync(baseOptions.modelsDirectory)) {
+    console.log(baseOptions.modelsDirectory);
     console.log(
       "Can't find models directory. Use `sequelize init` to create it"
     );

@@ -16,7 +16,9 @@ export function build(options: CommandLineOptions): BaseOptions {
 const readSequelizercOptions = () => {
   let sequelizercConfigs = [];
   let sequelizercPath = join(process.env.PWD, ".sequelizerc");
+
   if (existsSync(sequelizercPath)) {
+    console.log("sqlrc exists");
     sequelizercConfigs = require(sequelizercPath);
   }
 
@@ -26,7 +28,9 @@ const readSequelizercOptions = () => {
 
   return {
     migrationsDirectory:
-      sequelizercConfigs[""] || join(process.env.PWD, "migrations"),
-    modelsDirectory: sequelizercConfigs[""] || join(process.env.PWD, "models"),
+      sequelizercConfigs["migrations-path"] ||
+      join(process.env.PWD, "migrations"),
+    modelsDirectory:
+      sequelizercConfigs["models-path"] || join(process.env.PWD, "models"),
   };
 };

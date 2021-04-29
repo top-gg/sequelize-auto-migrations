@@ -23,11 +23,6 @@ interface CreateOptions extends BaseOptions {
   comment?: string;
 }
 
-// Support Windows
-if (!process.env.PWD) {
-  process.env.PWD = process.cwd();
-}
-
 export const command = "create";
 
 export const description = "create a new migration with your current models";
@@ -67,9 +62,15 @@ export const builder = {
 };
 
 export const handler = async (args: CreateOptions) => {
+  // Support Windows
+  if (!process.env.PWD) {
+    process.env.PWD = process.cwd();
+  }
+
   const options = build(args);
 
   if (!existsSync(options.modelsDirectory)) {
+    console.log(options.modelsDirectory);
     console.log(
       "Can't find models directory. Use `sequelize init` to create it"
     );
