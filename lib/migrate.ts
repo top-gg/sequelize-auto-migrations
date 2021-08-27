@@ -290,6 +290,8 @@ export const parseDifference = function (previousState, currentState) {
   let actions = [];
   let difference = diff(previousState, currentState);
 
+  if (!difference) return actions;
+
   for (let df of difference) {
     switch (df.kind) {
       // add new
