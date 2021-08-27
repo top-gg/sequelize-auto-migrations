@@ -28,7 +28,7 @@ export async function importSequelizeModel(
     else modelsImportPath = resolve(modelsDirectory, "index.ts");
   }
 
-  let modelsImport: any = await import(resolve(modelsImportPath, "index.ts"));
+  let modelsImport: any = await import(resolve(modelsImportPath));
   if ("default" in modelsImport) {
     modelsImport = modelsImport.default;
   }
