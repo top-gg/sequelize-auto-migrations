@@ -97,7 +97,7 @@ export const reverseSequelizeColType = function (col, prefix = "DataType.") {
         arrayType = prefix + _type.replace("[]", "");
       } else {
         arrayType =
-          col.seqType === "Sequelize.ARRAY(Sequelize.INTEGER)"
+          col.seqType === "DataType.ARRAY(DataType.INTEGER)"
             ? prefix + "INTEGER"
             : prefix + "STRING";
       }
@@ -126,7 +126,7 @@ export const reverseSequelizeColType = function (col, prefix = "DataType.") {
 
 export const reverseSequelizeDefValueType = function (
   defaultValue,
-  prefix = "Sequelize."
+  prefix = "DataType."
 ) {
   if (typeof defaultValue === "object") {
     if (defaultValue.constructor && defaultValue.constructor.name) {
@@ -217,8 +217,8 @@ export const reverseModels = function (sequelize, models) {
         } else {
           if (
             ![
-              "Sequelize.ARRAY(Sequelize.INTEGER)",
-              "Sequelize.ARRAY(Sequelize.STRING)",
+              "DataType.ARRAY(DataType.INTEGER)",
+              "DataType.ARRAY(DataType.STRING)",
             ].includes(attributes[column]["seqType"])
           ) {
             delete attributes[column];
@@ -233,9 +233,9 @@ export const reverseModels = function (sequelize, models) {
       let seqType = reverseSequelizeColType(attributes[column]);
 
       // No virtual types in migration
-      if (seqType === "Sequelize.VIRTUAL") {
+      if (seqType === "DataType.VIRTUAL") {
         log(
-          `[SKIP] Skip Sequelize.VIRTUAL column "${column}"", defined in model "${model}"`
+          `[SKIP] Skip DataType.VIRTUAL column "${column}"", defined in model "${model}"`
         );
         delete attributes[column];
         continue;
